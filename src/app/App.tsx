@@ -1,25 +1,24 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
+
+import { Sidebar } from 'widgets/Sidebar';
 
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppRouter } from './providers/router/index';
+
 import { useTheme } from './providers/ThemeProvider';
+import { ContentWrapper } from './ui/ContentWrapper';
 
 const App: React.FC = () => {
 	const { theme } = useTheme();
-	const dispatch = useDispatch();
-
-	// const inited = useSelector(getUserInited);
 
 	return (
-		<div className={classNames('app', {}, [theme])}>
+		<div
+			className={classNames('app app_dark_theme', {}, [
+				// theme
+			])}
+		>
 			<Suspense fallback="">
-				{/* <Navbar /> */}
-
-				<main className="content">
-					{/* <Sidebar /> */}
-					<AppRouter />
-				</main>
+				<Sidebar />
+				<ContentWrapper />
 			</Suspense>
 		</div>
 	);

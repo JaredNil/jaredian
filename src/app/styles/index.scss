@@ -1,7 +1,7 @@
 @import url("./reset.scss");
 @import url("./themes/dark.scss");
-@import url("./themes/normal.scss");
-@import url("./themes/orange.scss");
+// @import url("./themes/normal.scss");
+// @import url("./themes/orange.scss");
 @import url("./variables/global.scss");
 
 body {
@@ -11,31 +11,22 @@ body {
     min-height: 100vh;
 }
 
-.app_modal {
-    font: var(--font-m);
-    color: var(--primary-color);
-}
-
 .app {
-    font: var(--font-m);
-    color: var(--primary-color);
-    background: var(--bg-color);
-    min-height: 100vh;
-}
-
-.app_redesigned {
-    background: var(--bg-redesigned);
-    min-height: 100vh;
+    position: relative;
+    // background: var(--bg-redesigned);
+    overflow: hidden;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
     font: var(--font-m-redesigned);
     color: var(--text-redesigned);
 }
 
-
-main.content {
-    display: flex;
+aside {
+    height: 100%;
 }
 
-.page-wrapper {
+main {
     flex-grow: 1;
     padding: 20px;
     height: calc(100vh - var(--navber-height));

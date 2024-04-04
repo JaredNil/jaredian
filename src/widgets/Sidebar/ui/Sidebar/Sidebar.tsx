@@ -1,7 +1,11 @@
-import { memo, useState, type ReactElement } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import { memo, useState, type ReactElement } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
+
+import sidebarLogo from 'shared/assets/jaredian.svg';
+import sidebarLogoText from 'shared/assets/jaredian_text.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
 
 import cls from './Sidebar.module.scss';
 
@@ -18,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 	};
 
 	return (
-		<div
+		<aside
 			className={classNames(
 				cls.Sidebar,
 				{
@@ -27,8 +31,11 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 				[className]
 			)}
 		>
-			Sidebar
-		</div>
+			<div className={cls.sidebar__title}>
+				<Icon Svg={sidebarLogo} className={cls.sidebar__title_logo} />
+				<Icon Svg={sidebarLogoText} className={cls.sidebar__title_text} />
+			</div>
+		</aside>
 	);
 });
 

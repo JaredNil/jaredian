@@ -1,11 +1,13 @@
-import { Children, Suspense, useCallback } from 'react';
+/* eslint-disable react/jsx-no-useless-fragment */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import PageLoader from 'widgets/PageLoader/PageLoader';
 
-import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
-import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { useSelector } from 'react-redux';
+import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { RequireAuth } from './RequireAuth';
 
 const AppRouter: React.FC = () => {
@@ -13,11 +15,7 @@ const AppRouter: React.FC = () => {
 
 	const renderWithWrapper = useCallback(
 		(route: AppRoutesProps) => {
-			const element = (
-				<Suspense fallback={<PageLoader />}>
-					<div className="page-wrapper">{route.element}</div>
-				</Suspense>
-			);
+			const element = <Suspense fallback={<PageLoader />}>{route.element}</Suspense>;
 			return (
 				<Route
 					key={route.path}
