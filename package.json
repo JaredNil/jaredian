@@ -59,7 +59,6 @@
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.7.0",
     "json-server": "^0.17.0",
-    "loki": "^0.33.1",
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.2.2",
     "sass": "^1.69.6",
@@ -85,29 +84,9 @@
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.7",
     "eslint-config-next": "^14.0.4",
-    "eslint-plugin-i18next": "^6.0.3",
-    "i18next": "^23.7.16",
-    "i18next-browser-languagedetector": "^7.2.0",
-    "i18next-http-backend": "^2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-i18next": "^14.0.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.2.1"
-  },
-  "loki": {
-    "configurations": {
-      "chrome.laptop": {
-        "target": "chrome.app",
-        "width": 1366,
-        "height": 768,
-        "deviceScaleFactor": 1,
-        "mobile": false
-      },
-      "chrome.iphone7": {
-        "target": "chrome.app",
-        "preset": "iPhone 7"
-      }
-    }
   }
 }

@@ -2,9 +2,9 @@ import { Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
-import { $api } from 'shared/api/api';
-import { To } from 'history';
 import { NavigateOptions } from 'react-router';
+import { $api } from 'shared/api/api';
+import { To } from 'react-router-dom';
 
 export function createReduxStore(
 	initialState?: StateSchema,
