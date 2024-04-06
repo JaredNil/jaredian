@@ -1,10 +1,6 @@
 .sidebarWrapper {
     height: 100%;
     padding: 0.25rem 0.125rem 0.25rem 0.25rem;
-
-    @media (max-width: 550px) {
-        height: auto;
-    }
 }
 
 
@@ -25,20 +21,12 @@
     height: 100%;
     width: 100%;
     border-radius: 0.5rem;
-
-    @media (max-width: 550px) {
-        max-height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
 }
 
 .headerContent {
     padding: 5px 10px;
     background-color: (var(--bg-content));
-    height: var(--header-height);
+    min-height: var(--header-height);
     width: 100%;
     border-radius: 0.5rem;
 }

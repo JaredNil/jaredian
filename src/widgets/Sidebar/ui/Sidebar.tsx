@@ -1,19 +1,20 @@
+/* eslint-disable consistent-return */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { memo, useEffect, useState } from 'react';
+import { getWideSidebar, userAction } from 'entities/User';
+import { useSelector } from 'react-redux';
 import { LuArrowLeftToLine } from 'react-icons/lu';
+
+import clsGlobal from 'app/styles/index.module.scss';
 
 import sidebarLogo from 'shared/assets/jaredian.svg';
 import sidebarLogoText from 'shared/assets/jaredian_text.svg';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 
 import { Book } from './Book';
 import cls from './Sidebar.module.scss';
-
-import clsGlobal from 'app/styles/index.module.scss';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { getWideSidebar, userAction } from 'entities/User';
-import { useSelector } from 'react-redux';
 
 export const Sidebar: React.FC = memo(() => {
 	const [collapsed, setCollapsed] = useState(false);
@@ -27,7 +28,7 @@ export const Sidebar: React.FC = memo(() => {
 
 	useEffect(() => console.log('RENDER SIDEBAR_COMPONENT'));
 
-	if (isWideSidebar)
+	if (isWideSidebar) {
 		return (
 			<div
 				className={classNames(clsGlobal.sidebar, {
@@ -45,4 +46,5 @@ export const Sidebar: React.FC = memo(() => {
 				<Book />
 			</div>
 		);
+	}
 });

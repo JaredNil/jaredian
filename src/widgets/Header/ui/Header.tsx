@@ -1,25 +1,29 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable @typescript-eslint/no-shadow */
 import { memo, useCallback, useEffect, useState } from 'react';
-import { BiSearch } from 'react-icons/bi';
-import { FaUserAlt } from 'react-icons/fa';
-import { HiHome } from 'react-icons/hi';
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi2';
-import { TbFileUpload } from 'react-icons/tb';
-import { TiInfoLarge } from 'react-icons/ti';
 import { useSelector } from 'react-redux';
+import { FaArrowRightFromBracket } from 'react-icons/fa6';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi2';
+import { MdManageAccounts } from 'react-icons/md';
+
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { getWideSidebar, userAction } from 'entities/User';
 
-import { Button } from 'shared/ui/Button/Button';
 import { AuthModal } from 'features/Auth';
 import SearchDynamic from 'features/SearchDynamic/SearchDynamic';
+
+import sidebarLogo from 'shared/assets/jaredian.svg';
+import sidebarLogoText from 'shared/assets/jaredian_text.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+
 import cls from './Header.module.scss';
 
 export const Header: React.FC = memo(() => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
+
+	const dispatch = useAppDispatch();
+	const isWideSidebar = useSelector(getWideSidebar);
 
 	const navigate = useNavigate();
 
@@ -31,12 +35,32 @@ export const Header: React.FC = memo(() => {
 		setIsAuthModal(true);
 	}, []);
 
+	const onToggleSidebar = (): void => {
+		dispatch(userAction.toggleExpand());
+	};
+
 	useEffect(() => console.log('RENDER HEADER_COMPONENT'));
 
 	return (
-		<header className={cls.header}>
-			<div className={cls.header__router}>
-				<div className={cls.router}>
+		<div className={cls.header}>
+			<div className={cls.header__title}>
+				<div className={cls.header__title_path}>
+					<span>NAMESPACE/ESSENCE/POINT - OF DYNAMIC SEARCH</span>
+				</div>
+				{!isWideSidebar && (
+					<div className={cls.header__title_logo}>
+						<Icon Svg={sidebarLogo} className={cls.header__title_logo_1} />
+						<Icon Svg={sidebarLogoText} className={cls.header__title_logo_2} />
+					</div>
+				)}
+			</div>
+			<div className={cls.header__line}>
+				<div className={cls.header__line_routes}>
+					{!isWideSidebar && (
+						<button onClick={onToggleSidebar} type="button" className={cls.route}>
+							<FaArrowRightFromBracket size={23} />
+						</button>
+					)}
 					<button onClick={() => navigate(-1)} type="button" className={cls.route}>
 						<HiOutlineChevronLeft size={23} />
 					</button>
@@ -44,22 +68,17 @@ export const Header: React.FC = memo(() => {
 						<HiOutlineChevronRight size={23} />
 					</button>
 				</div>
-				<div className={cls.router}>
-					<button onClick={() => navigate('/')} type="button" className={cls.route}>
-						<HiHome className="text-black" size={20} />
-					</button>
-					<button type="button" onClick={() => navigate('/search')} className={cls.route}>
-						<BiSearch className="text-black" size={20} />
-					</button>
+				<div className={cls.header__line_search}>
+					<SearchDynamic />
+				</div>
+				<div className={cls.header__line_routes}>
 					{isAuthModal && <AuthModal isOpen={isAuthModal} onClose={() => onCloseModal()} />}
-					<button type="button" onClick={() => onShowModal()} className={cls.route}>
-						<TbFileUpload className="text-black" size={20} />
+					<button type="button" onClick={() => onShowModal()} className={cls.account}>
+						DEMO
+						<MdManageAccounts className="text-black" size={40} />
 					</button>
 				</div>
 			</div>
-			<div className={cls.header__search}>
-				<SearchDynamic />
-			</div>
-		</header>
+		</div>
 	);
 });

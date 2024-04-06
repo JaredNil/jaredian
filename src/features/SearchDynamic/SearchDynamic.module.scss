@@ -1,11 +1,9 @@
 .wrapper {
     position: relative;
-    bottom: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 80%;
+    width: 100%;
     background-color: var(--search-bg);
-
+    height: 100%;
+    max-height: 100px;
     border-radius: 14px;
 
     display: flex;
@@ -16,9 +14,9 @@
 .input {
     padding-left: 30px;
     flex-grow: 1;
-    height: 70%;
     background-color: transparent;
     border: 0;
+    height: 100%;
 
     -webkit-appearance: none;
     -moz-appearance: none;
