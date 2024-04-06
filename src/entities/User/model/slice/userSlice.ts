@@ -10,6 +10,7 @@ import { authByUsername } from '../service/authByUsername';
 const initialState: UserSchema = {
 	username: '',
 	isLoading: true,
+	wide: true,
 };
 
 export const userSlice = createSlice({
@@ -27,6 +28,9 @@ export const userSlice = createSlice({
 		},
 		offLoadingUser: (state) => {
 			state.isLoading = false;
+		},
+		toggleExpand: (state) => {
+			state.wide = !state.wide;
 		},
 	},
 	extraReducers: (builder) => {
