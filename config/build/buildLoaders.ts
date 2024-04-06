@@ -20,7 +20,7 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 	};
 
 	const fileLoader = {
-		test: /\.(png|webp|jpe?g|gif|woff2|woff)$/i,
+		test: /\.(png|webp|jpe?g|gif)$/i,
 		use: [
 			{
 				loader: 'file-loader',
@@ -28,5 +28,16 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 		],
 	};
 
-	return [fileLoader, svgLoader, tsLoader, scssLoader];
+	const fontLoader = {
+		test: /\.(woff2|woff)$/i,
+		exclude: /node_modules/,
+		loader: 'url-loader',
+		options: {
+			publicPath: './fonts/',
+			name: '../fonts/[name]/[ext]',
+			limit: 1000,
+		},
+	};
+
+	return [fileLoader, svgLoader, tsLoader, scssLoader, fontLoader];
 }

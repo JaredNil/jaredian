@@ -31,9 +31,26 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 				[className]
 			)}
 		>
-			<div className={cls.sidebar__title}>
-				<Icon Svg={sidebarLogo} className={cls.sidebar__title_logo} />
-				<Icon Svg={sidebarLogoText} className={cls.sidebar__title_text} />
+			<div className={cls.title}>
+				<Icon Svg={sidebarLogo} className={cls.title__logo} />
+				<Icon Svg={sidebarLogoText} className={cls.title__text} />
+			</div>
+			<div className={cls.sidebar}>
+				<div className={cls.namespace}>
+					<div className={cls.namespace__title}>namespace</div>
+					<div className={cls.namespace__body}>
+						<div className={cls.essence}>
+							<div className={cls.essence__title}>namespace</div>
+							<div className={cls.essence__points}>
+								<div className={cls.point}>Point</div>
+								<div className={cls.point}>Point</div>
+								<div className={cls.point}>Point</div>
+								<div className={cls.point}>Point</div>
+								<div className={cls.point}>Point</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</aside>
 	);
