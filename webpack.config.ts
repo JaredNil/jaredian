@@ -9,8 +9,6 @@ export default (env: BuildEnv): webpack.Configuration => {
 		build: path.resolve(__dirname, 'build'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
 		src: path.resolve(__dirname, 'src'),
-		locales: path.resolve(__dirname, 'public', 'locales'),
-		buildLocales: path.resolve(__dirname, 'build', 'locales'),
 	};
 
 	const PORT_DEV_SERVER = env.port || 3000;

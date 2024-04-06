@@ -29,15 +29,9 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 	};
 
 	const fontLoader = {
-		test: /\.(woff2|woff)$/i,
-		exclude: /node_modules/,
-		loader: 'url-loader',
-		options: {
-			publicPath: './fonts/',
-			name: '../fonts/[name]/[ext]',
-			limit: 1000,
-		},
+		test: /\.(woff|woff2|eot|ttf|otf)$/i,
+		type: 'asset/resource',
 	};
 
-	return [fileLoader, svgLoader, tsLoader, scssLoader, fontLoader];
+	return [fontLoader, fileLoader, svgLoader, tsLoader, scssLoader];
 }
