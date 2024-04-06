@@ -1,6 +1,11 @@
+export { authByCookie } from './model/service/authByCookie';
+export { authByUsername } from './model/service/authByUsername';
+export { logoutByServer } from './model/service/logoutByServer';
+
+export { getIsLoadingUser } from './model/selectors/getIsLoadingUser/getIsLoadingUser';
+
 export { userReducer, userAction } from './model/slice/userSlice';
 
-export { UserSchema, User } from './model/types/user';
+export { UserSchema } from './model/types/user';
 
-export { getUserAuthData } from './model/selectors/getUserAuthData/getUserAuthData';
-export { getUserInited } from './model/selectors/getUserInited/getUserInited';
+export { getUsername } from './model/selectors/getUsername/getUsername';

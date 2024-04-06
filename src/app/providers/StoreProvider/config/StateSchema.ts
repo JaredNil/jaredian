@@ -3,10 +3,12 @@ import { NavigateOptions, To } from 'react-router-dom';
 import { AxiosInstance } from 'axios';
 
 import { UserSchema } from 'entities/User';
+import { AuthSchema } from 'features/Auth';
 
 export interface StateSchema {
 	user: UserSchema;
 	// async reducer
+	auth?: AuthSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

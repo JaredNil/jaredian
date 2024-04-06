@@ -1,14 +1,19 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 
 import { Sidebar } from 'widgets/Sidebar';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 
+import { Header } from 'widgets/Header';
 import { useTheme } from './providers/ThemeProvider';
-import { ContentWrapper } from './ui/ContentWrapper';
+import { AppRouter } from './providers/router';
+
+import cls from './styles/index.module.scss';
 
 const App: React.FC = () => {
 	const { theme } = useTheme();
+
+	useEffect(() => console.log('RENDER APPCOMPONENT'));
 
 	return (
 		<div
@@ -17,8 +22,17 @@ const App: React.FC = () => {
 			])}
 		>
 			<Suspense fallback="">
-				<Sidebar />
-				<ContentWrapper />
+				<aside className={cls.sidebarWrapper}>
+					<Sidebar />
+				</aside>
+				<main className={cls.mainWrapper}>
+					<header className={cls.headerContent}>
+						<Header />
+					</header>
+					<div className={cls.mainContent}>
+						<AppRouter />
+					</div>
+				</main>
 			</Suspense>
 		</div>
 	);

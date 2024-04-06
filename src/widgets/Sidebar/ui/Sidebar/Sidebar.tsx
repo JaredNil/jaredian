@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { memo, useState, type ReactElement } from 'react';
+import { memo, useState, type ReactElement, useEffect } from 'react';
 
 import { classNames } from 'shared/lib/classNames/classNames';
 
@@ -7,6 +7,7 @@ import sidebarLogo from 'shared/assets/jaredian.svg';
 import sidebarLogoText from 'shared/assets/jaredian_text.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 
+import clsGlobal from 'app/styles/index.module.scss';
 import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
@@ -21,10 +22,12 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 		setCollapsed((collapsedPrev) => !collapsedPrev);
 	};
 
+	useEffect(() => console.log('RENDER SIDEBAR_COMPONENT'));
+
 	return (
-		<aside
+		<div
 			className={classNames(
-				cls.Sidebar,
+				clsGlobal.sidebar,
 				{
 					[cls.collapsed]: collapsed,
 				},
@@ -52,7 +55,7 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 					</div>
 				</div>
 			</div>
-		</aside>
+		</div>
 	);
 });
 

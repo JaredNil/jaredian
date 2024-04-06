@@ -7,7 +7,6 @@ import { ThemeProvider } from 'app/providers/ThemeProvider';
 
 import App from './app/App';
 
-
 import 'app/styles/index.scss';
 
 const root = createRoot(document.getElementById('root')!);

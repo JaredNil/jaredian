@@ -1,0 +1,40 @@
+.sidebarWrapper {
+    height: 100%;
+    padding: 0.25rem 0.125rem 0.25rem 0.25rem;
+    width: var(--sidebar-width);
+}
+
+.mainWrapper {
+    height: 100%;
+    flex-grow: 1;
+
+    padding: 0.25rem 0.25rem 0.25rem 0.125rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    padding: 5px 10px;
+    background-color: (var(--bg-content));
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.headerContent {
+    padding: 5px 10px;
+    background-color: (var(--bg-content));
+    height: var(--header-height);
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+.mainContent {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: (var(--bg-content));
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+}

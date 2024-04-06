@@ -1,0 +1,48 @@
+.header {
+    height: 100px;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+}
+
+.router {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+
+}
+
+.route {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border: 0;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    transition: opacity 0.2s ease 0s;
+    opacity: 0.6;
+
+    svg {
+        color: var(--bg-color);
+        opacity: 1;
+    }
+
+    &:hover {
+        opacity: 0.75;
+    }
+
+
+}
