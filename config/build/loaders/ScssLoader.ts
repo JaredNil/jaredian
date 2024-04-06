@@ -6,23 +6,15 @@ export function buildScssLoader(isDev: boolean): webpack.RuleSetRule {
 		test: /\.s[ac]ss$/i,
 		use: [
 			//   style-loader - Стилизует код, MiniCssExtractPlugin - раскидывает на отдельные файлы scss files в проде
-			isDev
-				? 'style-loader'
-				: MiniCssExtractPlugin.loader,
+			isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 			{
 				loader: 'css-loader',
 				options: {
 					modules: {
-						auto: (
-							resPath: string
-						) =>
-							Boolean(
-								resPath.includes(
-									'.module.'
-								)
-							),
+						auto: (resPath: string) => Boolean(resPath.includes('.module.')),
 						localIdentName: isDev
-							? '[path].[name]__[local]--[hash:base64:5]'
+							? // ? '[path].[name]__[local]--[hash:base64:5]'
+								'.[name]--[hash:base64:5]'
 							: '[hash:base64:8]',
 					},
 				},

@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = memo(({ className, children }: SidebarPr
 				<Icon Svg={sidebarLogo} className={cls.title__logo} />
 				<Icon Svg={sidebarLogoText} className={cls.title__text} />
 			</div>
-			<div className={cls.sidebar}>
+			<div className={cls.sidebar__menu}>
 				<div className={cls.namespace}>
 					<div className={cls.namespace__title}>namespace</div>
 					<div className={cls.namespace__body}>
