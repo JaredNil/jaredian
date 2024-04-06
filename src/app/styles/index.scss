@@ -2,6 +2,8 @@
 @import url("./themes/dark.scss");
 @import url("./variables/global.scss");
 
+@import "toastr";
+
 body {
     height: 100vh;
     max-height: 100vh;

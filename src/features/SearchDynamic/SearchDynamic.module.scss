@@ -1,0 +1,39 @@
+.wrapper {
+    position: relative;
+    bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 80%;
+    background-color: var(--search-bg);
+
+    border-radius: 14px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    padding-left: 30px;
+    flex-grow: 1;
+    height: 70%;
+    background-color: transparent;
+    border: 0;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    outline: none; //important!
+    border: none;
+
+    color: #fff;
+    font-size: 18px;
+}
+
+.icon {
+    margin-right: 5px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}

@@ -9,9 +9,6 @@ export const authByCookie = createAsyncThunk<UserSchema, void, ThunkConfig<strin
 		const res = await extra.api.get<UserSchema>('/auth/session', {
 			headers: {
 				withCredentials: true,
-				'Access-Control-Allow-Origin': 'http://jaredn-server.site:5000',
-				// 'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-				// 'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
 			},
 		});
 		return res.data;

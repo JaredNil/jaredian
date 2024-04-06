@@ -47,14 +47,6 @@ const AuthForm: React.FC<AuthFormProps> = memo((props: AuthFormProps) => {
 		[dispatch]
 	);
 
-	const onDevAuth = () => {
-		toastr.error(
-			'Фича находится на стадии разработки. Но спасибо за бетатест. :3 :3 :3',
-			`1d6. Критический провал`,
-			successUploadToastr
-		);
-	};
-
 	const onInfoAuth = () => {
 		toastr.info('Заходи под общим аккаунтом', `Не парься`, successUploadToastr);
 	};
@@ -62,12 +54,6 @@ const AuthForm: React.FC<AuthFormProps> = memo((props: AuthFormProps) => {
 	const onAuthFromServer = useCallback(async () => {
 		console.log(authUsername, authPassword);
 		const result = await dispatch(authByUsername({ authUsername, authPassword }));
-		if (result.meta.requestStatus === 'fulfilled') onSuccess();
-	}, [dispatch, authUsername, authPassword, onSuccess]);
-
-	const onAuthCommonFromServer = useCallback(async () => {
-		console.log(authUsername, authPassword);
-		const result = await dispatch(authByUsername({ authUsername: 'common', authPassword: 'common' }));
 		if (result.meta.requestStatus === 'fulfilled') onSuccess();
 	}, [dispatch, authUsername, authPassword, onSuccess]);
 
@@ -80,29 +66,7 @@ const AuthForm: React.FC<AuthFormProps> = memo((props: AuthFormProps) => {
 				>
 					Авторизация
 				</h2>
-				<div className="flex pb-3">
-					<Button
-						className={`mx-2 ml-auto flex
-							h-10 items-center justify-center bg-zinc-300
-							text-base font-normal text-black
-							`}
-						onClick={onDevAuth}
-					>
-						<FaGithub size={20} />
 
-						<span className="mx-2">Войти по Github</span>
-					</Button>
-					<Button
-						className={`mx-2 ml-auto flex
-							h-10 items-center justify-center bg-zinc-300
-							text-base font-normal text-black`}
-						onClick={onDevAuth}
-					>
-						<FcGoogle size={20} />
-
-						<span className="mx-2">Войти по Google</span>
-					</Button>
-				</div>
 				<div className="select-none font-extralight">Введите имя пользователя</div>
 				<Input
 					autoFocus
@@ -130,13 +94,6 @@ const AuthForm: React.FC<AuthFormProps> = memo((props: AuthFormProps) => {
 					Войти
 				</Button>
 
-				<Button
-					className={`ml-auto mt-[15px] text-xl
-						text-neutral-900/80`}
-					onClick={onAuthCommonFromServer}
-				>
-					Войти в общий аккаунт [ADMIN]
-				</Button>
 				<h3
 					className=" flex cursor-pointer select-none
 					items-center justify-center pt-4 text-center text-xs font-semibold text-white"

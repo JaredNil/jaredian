@@ -7,9 +7,24 @@
     border-radius: 8px;
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
 
+
+    &__router {
+        height: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__search {
+        height: 50%;
+        width: 100%;
+        display: flex;
+
+        justify-content: center;
+    }
 
 }
 
