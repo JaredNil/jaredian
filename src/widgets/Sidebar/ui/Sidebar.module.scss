@@ -28,14 +28,15 @@
     }
 }
 
-.sidebar__toogle {
+.sidebar__toogle,
+.sidebar__add {
     position: absolute;
-    top: 65px;
+    top: 52px;
     right: 10px;
-    width: 40px;
-    height: 40px;
-    background-color: var(--base-3);
-    border-radius: 4px 50% 4px 0;
+    width: 30px;
+    height: 30px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
 
     display: flex;
     align-items: center;
@@ -52,6 +53,16 @@
     transition: all 0.2s ease 0s;
 }
 
+.sidebar__add {
+    right: 46px;
+
+    svg {
+        margin-left: 0;
+        height: 70%;
+        width: 70%;
+    }
+}
+
 .sidebar__toogle_close {
     transform: rotate(-180deg);
 }
@@ -61,7 +72,7 @@
         display: none;
     }
 
-    padding-top: 10px;
+    padding-top: 44px;
     width: 100%;
 
     display: flex;

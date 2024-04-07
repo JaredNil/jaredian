@@ -43,7 +43,7 @@ export const Header: React.FC = memo(() => {
 		dispatch(userAction.toggleExpand());
 	};
 
-	const onInfoAuth = () => {
+	const onToggleBurger = () => {
 		toastr.error('Отказано', `Фича еще не реализована`, successUploadToastr);
 	};
 
@@ -62,10 +62,10 @@ export const Header: React.FC = memo(() => {
 			</div>
 			<div className={cls.header__line}>
 				<div className={cls.header__line_routes}>
-					<button onClick={onToggleSidebar} type="button" className={`${cls.route} ${cls.sidebar_btn}`}>
+					<button onClick={onToggleSidebar} type="button" className={`${cls.route} ${cls.sidebar_btn} ${isWideSidebar ? cls.sidebar_disable : ''}`}>
 						<FaArrowRightFromBracket size={23} />
 					</button>
-					<button onClick={onInfoAuth} type="button" className={`${cls.route} ${cls.ham}`}>
+					<button onClick={onToggleBurger} type="button" className={`${cls.route} ${cls.ham}`}>
 						<RxHamburgerMenu size={23} />
 					</button>
 					<button onClick={() => navigate(-1)} type="button" className={cls.route}>
