@@ -28,6 +28,12 @@
 
     color: #fff;
     font-size: 18px;
+
+    &::placeholder {
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: #ffffff93;
+    }
 }
 
 .icon {

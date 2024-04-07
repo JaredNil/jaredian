@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { memo, useCallback, useEffect, useState } from 'react';
+import toastr from 'toastr';
 import { useSelector } from 'react-redux';
 import { FaArrowRightFromBracket } from 'react-icons/fa6';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi2';
 import { MdManageAccounts } from 'react-icons/md';
+import { CiSquarePlus } from 'react-icons/ci';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -16,6 +19,7 @@ import sidebarLogo from 'shared/assets/jaredian.svg';
 import sidebarLogoText from 'shared/assets/jaredian_text.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { successUploadToastr } from 'shared/config/toastr/toastr.config';
 
 import cls from './Header.module.scss';
 
@@ -27,16 +31,20 @@ export const Header: React.FC = memo(() => {
 
 	const navigate = useNavigate();
 
-	const onCloseModal = useCallback(() => {
+	const onCloseAuthModal = useCallback(() => {
 		setIsAuthModal(false);
 	}, []);
 
-	const onShowModal = useCallback(() => {
+	const onShowAuthModal = useCallback(() => {
 		setIsAuthModal(true);
 	}, []);
 
 	const onToggleSidebar = (): void => {
 		dispatch(userAction.toggleExpand());
+	};
+
+	const onInfoAuth = () => {
+		toastr.error('Отказано', `Фича еще не реализована`, successUploadToastr);
 	};
 
 	useEffect(() => console.log('RENDER HEADER_COMPONENT'));
@@ -45,22 +53,21 @@ export const Header: React.FC = memo(() => {
 		<div className={cls.header}>
 			<div className={cls.header__title}>
 				<div className={cls.header__title_path}>
-					<span>NAMESPACE/ESSENCE/POINT - OF DYNAMIC SEARCH</span>
+					<span>NAMESPACE/ESSENCE/POINT</span>
 				</div>
-				{!isWideSidebar && (
-					<div className={cls.header__title_logo}>
-						<Icon Svg={sidebarLogo} className={cls.header__title_logo_1} />
-						<Icon Svg={sidebarLogoText} className={cls.header__title_logo_2} />
-					</div>
-				)}
+				<div className={`${cls.header__title_logo} ${isWideSidebar ? cls.logo_disable : ''}`}>
+					<Icon Svg={sidebarLogo} className={cls.header__title_logo_1} />
+					<Icon Svg={sidebarLogoText} className={cls.header__title_logo_2} />
+				</div>
 			</div>
 			<div className={cls.header__line}>
 				<div className={cls.header__line_routes}>
-					{!isWideSidebar && (
-						<button onClick={onToggleSidebar} type="button" className={cls.route}>
-							<FaArrowRightFromBracket size={23} />
-						</button>
-					)}
+					<button onClick={onToggleSidebar} type="button" className={`${cls.route} ${cls.sidebar_btn}`}>
+						<FaArrowRightFromBracket size={23} />
+					</button>
+					<button onClick={onInfoAuth} type="button" className={`${cls.route} ${cls.ham}`}>
+						<RxHamburgerMenu size={23} />
+					</button>
 					<button onClick={() => navigate(-1)} type="button" className={cls.route}>
 						<HiOutlineChevronLeft size={23} />
 					</button>
@@ -68,16 +75,21 @@ export const Header: React.FC = memo(() => {
 						<HiOutlineChevronRight size={23} />
 					</button>
 				</div>
-				<div className={cls.header__line_search}>
-					<SearchDynamic />
-				</div>
+
 				<div className={cls.header__line_routes}>
-					{isAuthModal && <AuthModal isOpen={isAuthModal} onClose={() => onCloseModal()} />}
-					<button type="button" onClick={() => onShowModal()} className={cls.account}>
+					<button type="button" onClick={() => navigate('/add')} className={cls.account}>
+						ADD
+						<CiSquarePlus className="text-black" size={40} />
+					</button>
+					{isAuthModal && <AuthModal isOpen={isAuthModal} onClose={() => onCloseAuthModal()} />}
+					<button type="button" onClick={() => onShowAuthModal()} className={cls.account}>
 						DEMO
 						<MdManageAccounts className="text-black" size={40} />
 					</button>
 				</div>
+			</div>
+			<div className={cls.header__search}>
+				<SearchDynamic />
 			</div>
 		</div>
 	);

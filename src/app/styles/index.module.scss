@@ -1,6 +1,10 @@
 .sidebarWrapper {
     height: 100%;
     padding: 0.25rem 0.125rem 0.25rem 0.25rem;
+
+    @media (max-width: 850px) {
+        display: none;
+    }
 }
 
 
