@@ -68,22 +68,9 @@ const AuthForm: React.FC<AuthFormProps> = memo((props: AuthFormProps) => {
 				</h2>
 
 				<div className="select-none font-extralight">Введите имя пользователя</div>
-				<Input
-					autoFocus
-					type="text"
-					className="mb-2"
-					placeholder="Sth nickname"
-					onChange={onChangeUsername}
-					value={authUsername}
-				/>
+				<Input autoFocus type="text" className="mb-2" placeholder="Sth nickname" onChange={onChangeUsername} value={authUsername} />
 				<div className="select-none font-extralight">Введите имя пользователя</div>
-				<Input
-					type="text"
-					className="mb-2"
-					placeholder="Sth password"
-					onChange={onChangePassword}
-					value={authPassword}
-				/>
+				<Input type="text" className="mb-2" placeholder="Sth password" onChange={onChangePassword} value={authPassword} />
 				<ValidateBlock />
 				<Button
 					className={`ml-auto mt-[15px] text-xl

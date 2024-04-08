@@ -4,9 +4,11 @@ import { AxiosInstance } from 'axios';
 
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/Auth';
+import { CounterSchema } from 'entities/Counter/model/types/counter';
 
 export interface StateSchema {
 	user: UserSchema;
+	counter: CounterSchema;
 	// async reducer
 	auth?: AuthSchema;
 }

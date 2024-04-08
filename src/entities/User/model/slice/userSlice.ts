@@ -10,12 +10,12 @@ import { authByUsername } from '../service/authByUsername';
 const initialState: UserSchema = {
 	username: '',
 	isLoading: true,
-	wide: true,
+	wide: false,
 };
 
 export const userSlice = createSlice({
 	name: 'user',
-	initialState,
+	initialState: () => initialState,
 	reducers: {
 		setUserData: (state, action: PayloadAction<UserSchema>) => {
 			state.username = action.payload.username;

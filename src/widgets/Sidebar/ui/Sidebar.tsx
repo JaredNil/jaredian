@@ -1,6 +1,7 @@
 /* eslint-disable consistent-return */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { memo, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import toastr from 'toastr';
 import { getWideSidebar, userAction } from 'entities/User';
 import { useSelector } from 'react-redux';
@@ -11,7 +12,6 @@ import clsGlobal from 'app/styles/index.module.scss';
 
 import sidebarLogo from 'shared/assets/jaredian.svg';
 import sidebarLogoText from 'shared/assets/jaredian_text.svg';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { successUploadToastr } from 'shared/config/toastr/toastr.config';
@@ -20,8 +20,7 @@ import { Book } from './Book';
 import cls from './Sidebar.module.scss';
 
 export const Sidebar: React.FC = memo(() => {
-	const [collapsed, setCollapsed] = useState(false);
-
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const isWideSidebar = useSelector(getWideSidebar);
 
@@ -33,15 +32,12 @@ export const Sidebar: React.FC = memo(() => {
 	};
 
 	useEffect(() => console.log('RENDER SIDEBAR_COMPONENT'));
+	useEffect(() => console.log(isWideSidebar));
 
 	if (isWideSidebar) {
 		return (
-			<div
-				className={classNames(clsGlobal.sidebar, {
-					[cls.collapsed]: collapsed,
-				})}
-			>
-				<div className={cls.title}>
+			<div className={clsGlobal.sidebar}>
+				<div className={cls.title} onClick={() => navigate('/')}>
 					<Icon Svg={sidebarLogo} className={cls.title__logo} />
 					<Icon Svg={sidebarLogoText} className={cls.title__text} />
 				</div>
