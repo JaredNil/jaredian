@@ -8,7 +8,7 @@ import { MdManageAccounts } from 'react-icons/md';
 import { CiSquarePlus } from 'react-icons/ci';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { counterAction } from 'entities/Counter/model/slice/counterSlice';
 import { getWideSidebar, userAction } from 'entities/User';
@@ -28,11 +28,16 @@ export const Header: React.FC = memo(() => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
 
 	const dispatch = useAppDispatch();
-	const isWideSidebar = useSelector(getWideSidebar);
 
+	const isWideSidebar = useSelector(getWideSidebar);
 	const counter = useSelector(getCounter);
 
+	const location = useLocation();
+	const pathToContent = location.hash.split('').map((e) => Number(e));
+
 	const navigate = useNavigate();
+	const transitMainPage = useCallback(() => navigate('/'), [navigate]);
+	const transitAddPage = useCallback(() => navigate('/add'), [navigate]);
 
 	const onCloseAuthModal = useCallback(() => {
 		setIsAuthModal(false);
@@ -50,16 +55,15 @@ export const Header: React.FC = memo(() => {
 		toastr.error('Отказано', `Фича еще не реализована`, successUploadToastr);
 	};
 
-	const transitMainPage = useCallback(() => navigate('/'), [navigate]);
-	const transitAddPage = useCallback(() => navigate('/add'), [navigate]);
-
 	useEffect(() => console.log('RENDER HEADER_COMPONENT'));
 
 	return (
 		<div className={cls.header}>
 			<div className={cls.header__title}>
 				<div className={cls.header__title_path}>
-					<span>NAMESPACE/ESSENCE/POINT</span>
+					<span>
+						NAMESPACE {pathToContent[1]}/ESSENCE{pathToContent[2]}/POINT{pathToContent[3]}
+					</span>
 				</div>
 				<div onClick={transitMainPage} className={`${cls.header__title_logo} ${isWideSidebar ? cls.logo_disable : ''}`}>
 					<Icon Svg={sidebarLogo} className={cls.header__title_logo_1} />

@@ -1,22 +1,22 @@
 /* eslint-disable consistent-return */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { memo, useEffect, useState } from 'react';
+import { getWideSidebar, userAction } from 'entities/User';
+import { memo, useEffect } from 'react';
+import { CiSquarePlus } from 'react-icons/ci';
+import { LuArrowLeftToLine } from 'react-icons/lu';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import toastr from 'toastr';
-import { getWideSidebar, userAction } from 'entities/User';
-import { useSelector } from 'react-redux';
-import { LuArrowLeftToLine } from 'react-icons/lu';
-import { CiSquarePlus } from 'react-icons/ci';
-
-import clsGlobal from 'app/styles/index.module.scss';
 
 import sidebarLogo from 'shared/assets/jaredian.svg';
 import sidebarLogoText from 'shared/assets/jaredian_text.svg';
-import { Icon } from 'shared/ui/Icon/Icon';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { successUploadToastr } from 'shared/config/toastr/toastr.config';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Icon } from 'shared/ui/Icon/Icon';
 
 import { Book } from './Book';
+
+import clsGlobal from '../../../app/styles/index.module.scss';
 import cls from './Sidebar.module.scss';
 
 export const Sidebar: React.FC = memo(() => {

@@ -1,7 +1,9 @@
 import { MouseEvent, memo } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 
-import { EssenceType, useBookAgent } from 'shared/lib/hooks/useBookAgent/useBookAgent';
+import { EssenceType } from 'entities/Library/model/types/library';
+
+import { useBookAgent } from 'shared/lib/hooks/useBookAgent/useBookAgent';
 
 import cls from './Sidebar.module.scss';
 

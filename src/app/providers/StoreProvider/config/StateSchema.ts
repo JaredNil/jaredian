@@ -6,6 +6,7 @@ import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/Auth';
 import { CounterSchema } from 'entities/Counter/model/types/counter';
 import { AddPageSchema } from 'pages/AddPage/model/types/addPageSchema';
+import { LibrarySchema } from 'entities/Library/model/types/library';
 
 export interface StateSchema {
 	user: UserSchema;
@@ -16,6 +17,7 @@ export interface StateSchema {
 
 	// async reducer
 	auth?: AuthSchema;
+	library?: LibrarySchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

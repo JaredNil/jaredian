@@ -1,36 +1,48 @@
-import { useState } from 'react';
-import { Input } from 'shared/ui/Input/Input';
-import { Loader } from 'shared/ui/Loader/Loader';
+import { getCurrentLibraryDataType, getCurrentLibraryIsLoading, getCurrentLibraryState } from 'entities/Library';
+import { useLibrary } from 'entities/Library/model/service/useLibrary';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { Title } from 'shared/ui/Title/Title';
-import BugButton from 'widgets/PageError/ui/BugButton';
-import { useLocation, useParams } from 'react-router-dom';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { libraryReducer } from 'entities/Library/model/slice/librarySlice';
+import { useEffect } from 'react';
+
+const initialReducers: ReducerList = {
+	library: libraryReducer,
+};
 
 const MainPage: React.FC = () => {
-	const [value, setValue] = useState('');
+	const location = useLocation();
 
-	const location = useParams();
-	console.log(location);
-	const onChange = (val: string) => {
-		setValue(val);
-	};
+	const isLoadingLibrary = useSelector(getCurrentLibraryIsLoading);
+	const libraryCurrentType = useSelector(getCurrentLibraryDataType);
+	const libraryCurrent = useSelector(getCurrentLibraryState);
+
+	const { updateLibraryData } = useLibrary(location.hash);
+
+	useEffect(() => {
+		if (!libraryCurrent) {
+			updateLibraryData();
+		}
+	}, []);
+
+	console.log('MAIN PAGE RENDER ---');
+	console.log(libraryCurrent);
 
 	return (
-		<div>
+		<DynamicModuleLoader reducers={initialReducers}>
 			<div>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt nisi obcaecati neque sint, impedit nesciunt. Necessitatibus cumque veniam natus
-				suscipit. Accusantium libero dolores quidem voluptate tempora harum eos natus.
+				{location.hash}
+				На данный момент тип запроса - {`${libraryCurrentType}`}
+				{libraryCurrent && (
+					<div>
+						{libraryCurrent.map((ns) => {
+							return <div> {ns.namespace}</div>;
+						})}
+					</div>
+				)}
 			</div>
-			<Title size="m">Lorem</Title>
-			<div>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt nisi obcaecati neque sint, impedit nesciunt. Necessitatibus cumque veniam natus
-				suscipit. Accusantium libero dolores quidem voluptate tempora harum eos natus.
-			</div>
-			<Title size="m">Lorem</Title>
-			<div>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure incidunt nisi obcaecati neque sint, impedit nesciunt. Necessitatibus cumque veniam natus
-				suscipit. Accusantium libero dolores quidem voluptate tempora harum eos natus.
-			</div>
-		</div>
+		</DynamicModuleLoader>
 	);
 };
 
