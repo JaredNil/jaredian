@@ -1,0 +1,101 @@
+.page {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.page__header {
+    height: 200px;
+    font-size: 20px;
+}
+
+.page__footer {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 100;
+    user-select: none;
+}
+
+
+.namespace {
+    position: relative;
+    background-color: var(--base-1);
+    padding: 40px 10px 20px 10px;
+    margin: 0 0 40px 0;
+
+    &__title {
+        font-size: 32px;
+        position: absolute;
+        top: 8px;
+        left: 8px;
+
+        color: var(--base-2);
+
+        user-select: none;
+    }
+
+    &__body {
+
+        margin-left: 15px;
+    }
+}
+
+.essence {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+        font-size: 32px;
+        font-weight: 100;
+        line-height: 36px;
+        user-select: none;
+    }
+
+    &__points {
+        padding-left: 20px;
+    }
+}
+
+.point {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0px;
+    }
+
+
+    &__title {
+        position: relative;
+        left: 0;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 32px;
+
+        transform: translateX(-40px);
+    }
+}
+
+.article {
+    position: relative;
+    background-color: var(--base-3);
+    border-radius: 0 20px 20px 0;
+
+    .article__line {
+        position: relative;
+
+        span {
+            position: absolute;
+            top: 0;
+            left: -17px;
+            width: 17px;
+            text-align: center;
+            opacity: 0.6;
+            user-select: none;
+        }
+    }
+
+
+}

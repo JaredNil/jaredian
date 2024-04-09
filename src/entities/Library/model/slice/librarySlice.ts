@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { DataType, LibrarySchema, NamespaceType } from '../types/library';
 
 const initialState: LibrarySchema = {
-	dataType: DataType.MAIN,
+	dataType: DataType.COMMON,
 	data: undefined,
 
 	isLoadingData: true,

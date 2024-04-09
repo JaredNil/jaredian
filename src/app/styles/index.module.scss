@@ -30,16 +30,17 @@
 .headerContent {
     padding: 5px 10px;
     background-color: (var(--bg-content));
-    min-height: var(--header-height);
+    height: var(--header-height);
     width: 100%;
     border-radius: 0.5rem;
 }
 
 .mainContent {
+    position: relative;
     margin-top: 5px;
     padding: 5px 10px;
     background-color: (var(--bg-content));
-    height: 100%;
+    height: calc(100vh - var(--header-height));
     width: 100%;
     border-radius: 0.5rem;
 }

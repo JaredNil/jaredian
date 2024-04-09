@@ -19,10 +19,6 @@ export const useLibrary = (path: string) => {
 		const pathToContent = path.split('').map((e) => Number(e));
 		pathToContent.shift();
 
-		console.log('updateLibraryData');
-		console.log(libraryState);
-		console.log('updateLibraryData');
-
 		if (libraryState) {
 			dispatch(libraryAction.setCurrentLibraryData(libraryState));
 		} else console.warn('libraryState - пуст');

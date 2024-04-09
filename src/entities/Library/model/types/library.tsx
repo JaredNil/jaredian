@@ -1,5 +1,5 @@
 export enum DataType {
-	MAIN = 'main',
+	COMMON = 'common',
 	NAMESPACE = 'namespace',
 	ESSENCE = 'essence',
 }

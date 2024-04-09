@@ -7,6 +7,9 @@ import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicM
 import { libraryReducer } from 'entities/Library/model/slice/librarySlice';
 import { useEffect } from 'react';
 
+import cls from './MainPage.module.scss';
+import { LibraryCommon } from './Library/LibraryCommon';
+
 const initialReducers: ReducerList = {
 	library: libraryReducer,
 };
@@ -14,9 +17,9 @@ const initialReducers: ReducerList = {
 const MainPage: React.FC = () => {
 	const location = useLocation();
 
+	const libraryCurrent = useSelector(getCurrentLibraryState);
 	const isLoadingLibrary = useSelector(getCurrentLibraryIsLoading);
 	const libraryCurrentType = useSelector(getCurrentLibraryDataType);
-	const libraryCurrent = useSelector(getCurrentLibraryState);
 
 	const { updateLibraryData } = useLibrary(location.hash);
 
@@ -27,20 +30,13 @@ const MainPage: React.FC = () => {
 	}, []);
 
 	console.log('MAIN PAGE RENDER ---');
-	console.log(libraryCurrent);
 
 	return (
 		<DynamicModuleLoader reducers={initialReducers}>
-			<div>
-				{location.hash}
-				На данный момент тип запроса - {`${libraryCurrentType}`}
-				{libraryCurrent && (
-					<div>
-						{libraryCurrent.map((ns) => {
-							return <div> {ns.namespace}</div>;
-						})}
-					</div>
-				)}
+			<div className={cls.page}>
+				<div className={cls.page__header}>На данный момент тип запроса - {`${libraryCurrentType} ${location.hash}`}</div>
+				<LibraryCommon />
+				<div className={cls.page__footer}>JaredN </div>
 			</div>
 		</DynamicModuleLoader>
 	);
