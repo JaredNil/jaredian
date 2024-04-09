@@ -32,11 +32,6 @@ export const LibraryCommon: React.FC = () => {
 																	cls.article__line
 																}
 															>
-																<span>
-																	{
-																		id
-																	}
-																</span>
 																{line}
 															</div>
 														))}
