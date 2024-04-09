@@ -10,6 +10,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 
 import { Link, useNavigate } from 'react-router-dom';
 
+import { counterAction } from 'entities/Counter/model/slice/counterSlice';
 import { getWideSidebar, userAction } from 'entities/User';
 import { getCounter } from 'entities/Counter/model/selector/counterSelector';
 
@@ -22,7 +23,6 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { successUploadToastr } from 'shared/config/toastr/toastr.config';
 
 import cls from './Header.module.scss';
-import { counterAction } from 'entities/Counter/model/slice/counterSlice';
 
 export const Header: React.FC = memo(() => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
@@ -50,6 +50,9 @@ export const Header: React.FC = memo(() => {
 		toastr.error('Отказано', `Фича еще не реализована`, successUploadToastr);
 	};
 
+	const transitMainPage = useCallback(() => navigate('/'), [navigate]);
+	const transitAddPage = useCallback(() => navigate('/add'), [navigate]);
+
 	useEffect(() => console.log('RENDER HEADER_COMPONENT'));
 
 	return (
@@ -58,10 +61,10 @@ export const Header: React.FC = memo(() => {
 				<div className={cls.header__title_path}>
 					<span>NAMESPACE/ESSENCE/POINT</span>
 				</div>
-				<Link to="/" className={`${cls.header__title_logo} ${isWideSidebar ? cls.logo_disable : ''}`}>
+				<div onClick={transitMainPage} className={`${cls.header__title_logo} ${isWideSidebar ? cls.logo_disable : ''}`}>
 					<Icon Svg={sidebarLogo} className={cls.header__title_logo_1} />
 					<Icon Svg={sidebarLogoText} className={cls.header__title_logo_2} />
-				</Link>
+				</div>
 			</div>
 			<div className={cls.header__line}>
 				<div className={cls.header__line_routes}>
@@ -77,7 +80,7 @@ export const Header: React.FC = memo(() => {
 					<button onClick={() => navigate(1)} type="button" className={cls.route}>
 						<HiOutlineChevronRight size={23} />
 					</button>
-					<button onClick={() => navigate(1)} type="button" className={cls.route}>
+					<button type="button" className={cls.route}>
 						{counter}
 					</button>
 					<button onClick={() => dispatch(counterAction.plusCounter())} type="button" className={cls.route}>
@@ -86,10 +89,10 @@ export const Header: React.FC = memo(() => {
 				</div>
 
 				<div className={cls.header__line_routes}>
-					<Link to="/add" type="button" className={cls.account}>
+					<button type="button" className={cls.account} onClick={transitAddPage}>
 						ADD
 						<CiSquarePlus className="text-black" size={40} />
-					</Link>
+					</button>
 					{isAuthModal && <AuthModal isOpen={isAuthModal} onClose={() => onCloseAuthModal()} />}
 					<button type="button" onClick={() => onShowAuthModal()} className={cls.account}>
 						DEMO

@@ -5,10 +5,15 @@ import { AxiosInstance } from 'axios';
 import { UserSchema } from 'entities/User';
 import { AuthSchema } from 'features/Auth';
 import { CounterSchema } from 'entities/Counter/model/types/counter';
+import { AddPageSchema } from 'pages/AddPage/model/types/addPageSchema';
 
 export interface StateSchema {
 	user: UserSchema;
 	counter: CounterSchema;
+
+	// page reducer
+	addPage?: AddPageSchema;
+
 	// async reducer
 	auth?: AuthSchema;
 }

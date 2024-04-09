@@ -3,10 +3,13 @@ import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Title } from 'shared/ui/Title/Title';
 import BugButton from 'widgets/PageError/ui/BugButton';
+import { useLocation, useParams } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
 	const [value, setValue] = useState('');
 
+	const location = useParams();
+	console.log(location);
 	const onChange = (val: string) => {
 		setValue(val);
 	};

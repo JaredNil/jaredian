@@ -4,9 +4,6 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 import { EssenceType, useBookAgent } from 'shared/lib/hooks/useBookAgent/useBookAgent';
 
 import cls from './Sidebar.module.scss';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useSelector } from 'react-redux';
-import { getWideSidebar } from 'entities/User';
 
 interface EssenceProps {}
 

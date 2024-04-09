@@ -32,7 +32,6 @@ export const Sidebar: React.FC = memo(() => {
 	};
 
 	useEffect(() => console.log('RENDER SIDEBAR_COMPONENT'));
-	useEffect(() => console.log(isWideSidebar));
 
 	if (isWideSidebar) {
 		return (

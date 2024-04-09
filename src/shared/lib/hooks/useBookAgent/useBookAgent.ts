@@ -1,5 +1,8 @@
 /* eslint-disable indent */
 import { useState } from 'react';
+import toastr from 'toastr';
+import { useNavigate } from 'react-router-dom';
+import { successUploadToastr } from 'shared/config/toastr/toastr.config';
 
 export type PointType = {
 	title: string;
@@ -128,12 +131,20 @@ const defaultContent: NamespaceType[] = [
 export const useBookAgent = () => {
 	const [bookState, setBookState] = useState(() => defaultContent);
 
+	const navigate = useNavigate();
+
 	const setNewBookState = (path: string) => {
 		console.log(path);
+
 		const pathToChange = path.split('').map((e) => Number(e));
+
+		const devInfoToastr = () => {
+			toastr.info(`${path} NS ${pathToChange[0]} /ESS ${pathToChange[1]} /POINT ${pathToChange[2]}`, `Hash transit`, successUploadToastr);
+		};
+
 		switch (pathToChange.length) {
 			case 1:
-				console.log('Ничего не происходит');
+				devInfoToastr();
 				break;
 			case 2:
 				setBookState((prevState) => {
@@ -145,7 +156,8 @@ export const useBookAgent = () => {
 				});
 				break;
 			case 3:
-				console.log('ПЕРЕХОД НА СТРАНИЦУ С КОНТЕНТОМ');
+				devInfoToastr();
+				navigate(`/#${path}`);
 				break;
 			default:
 				console.warn('СТРАННОЕ ПОВЕДЕНИЕ', pathToChange, ' не проходит через пайплайн');
