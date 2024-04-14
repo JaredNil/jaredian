@@ -11,7 +11,7 @@ import { RiHomeLine } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
 import toastr from 'toastr';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { getWideSidebar, userAction } from 'entities/User';
 
@@ -33,7 +33,8 @@ export const Header: React.FC = memo(() => {
 
 	const dispatch = useAppDispatch();
 
-	const isWideSidebar = useSelector(getWideSidebar);
+	const location = useLocation();
+	console.log(location);
 
 	const navigate = useNavigate();
 	const transitMainPage = useCallback(() => navigate('/'), [navigate]);

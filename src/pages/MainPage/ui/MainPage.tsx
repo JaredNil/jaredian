@@ -40,10 +40,10 @@ const MainPage: React.FC = () => {
 						<span>
 							NAMESPACE {pathToContent[1]}/ESSENCE{pathToContent[2]}/POINT{pathToContent[3]}
 						</span>
+						<div className={cls.page__header}>На данный момент тип запроса - {`${libraryCurrentType} ${location.hash}`}</div>
 					</div>
 				</div>
 
-				<div className={cls.page__header}>На данный момент тип запроса - {`${libraryCurrentType} ${location.hash}`}</div>
 				<LibraryCommon />
 				<div className={cls.page__footer}>JaredN </div>
 			</div>

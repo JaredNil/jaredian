@@ -20,7 +20,6 @@ export const librarySlice = createSlice({
 			state.isLoadingData = false;
 		},
 		setCurrentLibraryData: (state, action: PayloadAction<NamespaceType[]>) => {
-			console.log(action.payload);
 			state.data = action.payload;
 		},
 	},

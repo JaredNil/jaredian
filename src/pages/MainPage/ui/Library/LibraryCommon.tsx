@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 
 import { useSelector } from 'react-redux';
@@ -28,6 +29,7 @@ export const LibraryCommon: React.FC = () => {
 													<div className={cls.article}>
 														{point.body.map((line, id) => (
 															<div
+																key={id}
 																className={
 																	cls.article__line
 																}

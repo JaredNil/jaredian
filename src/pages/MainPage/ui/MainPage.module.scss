@@ -5,7 +5,7 @@
 }
 
 .page__header {
-    height: 200px;
+    margin-bottom: 20px;
     font-size: 20px;
 }
 
@@ -23,11 +23,10 @@
 .namespace {
     position: relative;
     background-color: var(--base-1);
-    padding: 40px 10px 20px 10px;
+    padding: 24px 10px 20px 10px;
     margin: 0 0 40px 0;
 
     &__title {
-        font-size: 32px;
         position: absolute;
         top: 8px;
         left: 8px;
@@ -35,6 +34,16 @@
         color: var(--base-2);
 
         user-select: none;
+
+        font-size: 20px;
+
+        @media (min-width:640px) {
+            font-size: 24px;
+        }
+
+        @media (min-width:1040px) {
+            font-size: 30px;
+        }
     }
 
     &__body {
@@ -49,10 +58,21 @@
     flex-direction: column;
 
     &__title {
-        font-size: 50px;
+        margin-top: 10px;
+        font-size: 32px;
         font-weight: 100;
-        line-height: 80px;
+        line-height: 30px;
         user-select: none;
+
+        @media (min-width:640px) {
+            font-size: 42px;
+            line-height: 60px;
+        }
+
+        @media (min-width:1040px) {
+            font-size: 50px;
+            line-height: 70px;
+        }
     }
 
     &__points {
@@ -71,11 +91,20 @@
     &__title {
         position: relative;
         left: 0;
-        font-size: 28px;
-        font-weight: 500;
-        line-height: 60px;
 
-        // transform: translateX(-40px);
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 44px;
+
+        @media (min-width:640px) {
+            font-size: 32px;
+            line-height: 50px;
+        }
+
+        @media (min-width:1040px) {
+            font-size: 40px;
+            line-height: 60px;
+        }
     }
 }
 
@@ -83,9 +112,21 @@
     position: relative;
     background-color: var(--base-3);
     border-radius: 0 20px 20px 0;
-    font-size: 22px;
-    line-height: 24px;
+
     font-weight: 300;
+
+    font-size: 14px;
+    line-height: 16px;
+
+    @media (min-width:640px) {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    @media (min-width:1040px) {
+        font-size: 18px;
+        line-height: 20px;
+    }
 
     &::before {
         content: '';
@@ -99,19 +140,7 @@
     .article__line {
         position: relative;
         margin-bottom: 2px;
-        // left: 30px;
         width: calc(100% - 40px);
-
-        // span {
-        //     position: absolute;
-        //     top: 0;
-        //     left: -30px;
-        //     width: 30px;
-        //     text-align: center;
-        //     font-weight: 100;
-        //     opacity: 0.6;
-        //     user-select: none;
-        // }
     }
 
 
