@@ -38,16 +38,17 @@
     height: 40px;
 }
 
-.header__block {
-    background: var(--colors-main);
-}
-
 .header__circle {
     background: var(--colors-main);
     border-radius: 50%;
 }
 
-.header__circle_empty {
+.header__block {
+    background: var(--colors-main);
+    border-radius: 6px;
+}
+
+.header__block_empty {
     position: relative;
     border-radius: 6px;
 

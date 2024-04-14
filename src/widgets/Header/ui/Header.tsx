@@ -8,19 +8,16 @@ import { MdManageAccounts } from 'react-icons/md';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 import { RiHomeLine } from 'react-icons/ri';
-import { useSelector } from 'react-redux';
-import toastr from 'toastr';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { getWideSidebar, userAction } from 'entities/User';
+import { userAction } from 'entities/User';
 
 import { AuthModal } from 'features/Auth';
 import { BurgerModal } from 'features/Burger/ui/BurgerModal/BurgerModal';
 
 import sidebarLogo from 'shared/assets/jaredian.svg';
 import sidebarLogoText from 'shared/assets/jaredian_text.svg';
-import { successUploadToastr } from 'shared/config/toastr/toastr.config';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
 import { Icon } from 'shared/ui/Icon/Icon';
@@ -33,8 +30,8 @@ export const Header: React.FC = memo(() => {
 
 	const dispatch = useAppDispatch();
 
-	const location = useLocation();
-	console.log(location);
+	const { pathname } = useLocation();
+	console.log(pathname);
 
 	const navigate = useNavigate();
 	const transitMainPage = useCallback(() => navigate('/'), [navigate]);
@@ -72,14 +69,27 @@ export const Header: React.FC = memo(() => {
 					<Button theme={ButtonTheme.HEADER_CIRCLE} size={ButtonSize.XL} onClick={() => navigate(1)}>
 						<HiOutlineChevronRight size={23} />
 					</Button>
-					<Button theme={ButtonTheme.HEADER_CIRCLE_EMPTY} size={ButtonSize.XL} onClick={transitMainPage}>
+					<Button
+						//
+						theme={pathname === '/' ? ButtonTheme.HEADER_BLOCK : ButtonTheme.HEADER_BLOCK_EMPTY}
+						size={ButtonSize.XL}
+						onClick={transitMainPage}
+					>
 						<RiHomeLine size={23} />
 					</Button>
-					<Button theme={ButtonTheme.HEADER_CIRCLE_EMPTY} size={ButtonSize.XL} onClick={transitAddPage}>
+					<Button
+						theme={pathname === '/add' ? ButtonTheme.HEADER_BLOCK : ButtonTheme.HEADER_BLOCK_EMPTY}
+						size={ButtonSize.XL}
+						onClick={transitAddPage}
+					>
 						<CiSquarePlus className="text-black" size={23} />
 					</Button>
 					{isAuthModal && <AuthModal isOpen={isAuthModal} onClose={() => onCloseAuthModal()} />}
-					<Button theme={ButtonTheme.HEADER_CIRCLE_EMPTY} size={ButtonSize.XL} onClick={() => onShowAuthModal()}>
+					<Button
+						theme={isAuthModal ? ButtonTheme.HEADER_BLOCK : ButtonTheme.HEADER_BLOCK_EMPTY}
+						size={ButtonSize.XL}
+						onClick={() => onShowAuthModal()}
+					>
 						<MdManageAccounts size={23} />
 					</Button>
 					<div className={cls.header__account}>

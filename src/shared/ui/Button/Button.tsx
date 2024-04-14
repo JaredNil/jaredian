@@ -9,6 +9,7 @@ export enum ButtonTheme {
 	HEADER_CIRCLE = 'header__circle',
 	HEADER_CIRCLE_EMPTY = 'header__circle_empty',
 	HEADER_BLOCK = 'header__block',
+	HEADER_BLOCK_EMPTY = 'header__block_empty',
 }
 
 export enum ButtonSize {
@@ -29,7 +30,7 @@ export const Button = memo<ButtonProps>((props: ButtonProps) => {
 	const {
 		children,
 		className,
-		theme = ButtonTheme.HEADER_CIRCLE,
+		theme = ButtonTheme.HEADER_BLOCK,
 		//
 		size = ButtonSize.M,
 		disabled = false,

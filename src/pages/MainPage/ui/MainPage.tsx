@@ -1,14 +1,13 @@
 import { getCurrentLibraryDataType, getCurrentLibraryIsLoading, getCurrentLibraryState } from 'entities/Library';
 import { useLibrary } from 'entities/Library/model/service/useLibrary';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { Title } from 'shared/ui/Title/Title';
-import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { libraryReducer } from 'entities/Library/model/slice/librarySlice';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 
-import cls from './MainPage.module.scss';
 import { LibraryCommon } from './Library/LibraryCommon';
+import cls from './MainPage.module.scss';
 
 const initialReducers: ReducerList = {
 	library: libraryReducer,
