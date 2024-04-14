@@ -7,9 +7,11 @@ import { useBookAgent } from 'shared/lib/hooks/useBookAgent/useBookAgent';
 
 import cls from './Sidebar.module.scss';
 
-interface EssenceProps {}
+interface BookProps {
+	className?: string;
+}
 
-export const Book: React.FC<EssenceProps> = memo(() => {
+export const Book: React.FC<BookProps> = memo(({ className }: BookProps) => {
 	const { bookState, setNewBookState } = useBookAgent();
 
 	const sidebarClickHandler = (e: MouseEvent<HTMLDivElement>) => {
@@ -18,7 +20,7 @@ export const Book: React.FC<EssenceProps> = memo(() => {
 	};
 
 	return (
-		<div className={cls.sidebar__menu} onClick={sidebarClickHandler}>
+		<div className={`${cls.book} ${className}`} onClick={sidebarClickHandler}>
 			{bookState.map((ns) => (
 				<div className={cls.namespace} key={ns.nsid}>
 					<div data-m={`${ns.nsid}`} className={cls.namespace__title}>

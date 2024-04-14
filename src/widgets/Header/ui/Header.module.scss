@@ -8,7 +8,7 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .header__title {
@@ -38,25 +38,39 @@
     }
 
     &_logo {
+        position: relative;
         display: flex;
         align-items: center;
+        height: 100%;
+
+        @media (max-width: 820px) {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+        }
 
         &_1 {
             fill: var(--secondary-color);
-            height: 30px;
-            width: 30px;
+            width: 50px;
+            height: 50px;
 
-            @media (max-width:750px) {
+            @media (max-width: 820px) {
                 display: none;
             }
         }
 
         &_2 {
-            margin-left: 15px;
             fill: var(--secondary-color);
-            height: 30px;
-            width: 140px;
+            height: 100%;
+            width: 355px;
 
+            @media (max-width: 820px) {
+                width: 225px;
+            }
+
+            @media (max-width: 480px) {
+                width: 155px;
+            }
 
         }
 
@@ -64,12 +78,6 @@
 
         &:hover {
             opacity: 0.7;
-        }
-
-        &.logo_disable {
-            @media (min-width: 850px) {
-                display: none;
-            }
         }
 
     }
@@ -87,14 +95,136 @@
     display: flex;
     align-items: center;
     column-gap: 14px;
+
+    @media (max-width: 820px) {
+        button {
+
+            &:nth-child(3),
+            &:nth-child(4),
+            &:nth-child(5) {
+                display: none;
+            }
+        }
+
+        .header__account {
+            display: none;
+        }
+
+    }
+
+    .header__account {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (max-width: 820px) {
+            display: none;
+        }
+
+        .header__account_title {
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            user-select: none;
+            background-image: var(--colors-main);
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .header__account_info {
+            font-size: 16px;
+            text-align: center;
+            user-select: none;
+        }
+    }
 }
 
-.header__search {
-    width: 100%;
-    // padding-left: 15px;
-    // padding-right: 15px;
-    padding: 10px 0;
+.header__line_burger {
+    display: block;
+
+    @media (min-width: 820px) {
+        display: none;
+    }
 }
+
+
+.search {
+    position: relative;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 5;
+
+    background: var(--colors-main);
+    border-radius: 8px 8px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: 50px;
+        width: 1px;
+        height: calc(100% - 8px);
+        background-color: #111;
+    }
+
+    button {
+        height: 100%;
+        width: 40px;
+        background-color: transparent;
+        border: none;
+
+        cursor: pointer;
+
+        svg {
+            transform: rotate(180deg);
+        }
+    }
+
+    .input {
+        position: relative;
+        display: block;
+        padding-left: 30px;
+        height: 36px;
+        flex-grow: 1;
+        background: transparent;
+        border: 0;
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        outline: none;
+        border: none;
+
+        color: #111;
+        font-size: 18px;
+
+        &::placeholder {
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-size: 16px;
+            color: #111;
+        }
+
+
+    }
+
+    .icon {
+        fill: #111;
+        margin-right: 5px;
+        margin-bottom: 2px;
+        cursor: pointer;
+    }
+}
+
+
+
+
 
 
 .route {

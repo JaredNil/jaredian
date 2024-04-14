@@ -35,7 +35,7 @@
     right: 10px;
     width: 30px;
     height: 30px;
-    background-color: var(--secondary-color);
+    background: var(--colors-main);
     border-radius: 50%;
 
     display: flex;
@@ -67,12 +67,7 @@
     transform: rotate(-180deg);
 }
 
-.sidebar__menu {
-    @media (max-width: 550px) {
-        display: none;
-    }
-
-    padding-top: 44px;
+.book {
     width: 100%;
 
     display: flex;

@@ -1,13 +1,18 @@
-import { AiOutlineSearch } from 'react-icons/ai';
-import cls from './SearchDynamic.module.scss';
+// import { AiOutlineSearch } from 'react-icons/ai';
+// import { Button, ButtonSize } from 'shared/ui/Button/Button';
 
-const SearchDynamic = () => {
-	return (
-		<div className={cls.wrapper}>
-			<input className={cls.input} type="text" placeholder="Динамический поиск..." />
-			<AiOutlineSearch className={cls.icon} size={30} />
-		</div>
-	);
-};
+// import cls from './SearchDynamic.module.scss';
 
-export default SearchDynamic;
+// const SearchDynamic = () => {
+// 	return (
+// 		<div className={cls.wrapper}>
+// 			<Button theme={ButtonTheme.HEADER_BLOCK} size={ButtonSize.XL} onClick={onToggleSidebar}>
+// 				<LuArrowLeftToLine size={23} />
+// 			</Button>
+// 			<input className={cls.input} type="text" placeholder="Динамический поиск..." />
+// 			<AiOutlineSearch className={cls.icon} size={30} />
+// 		</div>
+// 	);
+// };
+
+// export default SearchDynamic;

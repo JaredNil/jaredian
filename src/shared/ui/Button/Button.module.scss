@@ -1,5 +1,15 @@
 .Button {
     cursor: pointer;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
         opacity: 0.8;
@@ -13,54 +23,78 @@
     height: 24px;
 }
 
-.square.size_m {
+.size_m {
     width: 24px;
     height: 24px;
 }
 
-.square.size_l {
+.size_l {
     width: 32px;
     height: 32px;
 }
 
-.square.size_xl {
+.size_xl {
     width: 40px;
     height: 40px;
 }
 
-.clear {
-    margin: 0;
-    outline: none;
-    border: none;
-    padding: 0;
-    background: none;
-    background-color: transparent;
+.header__block {
+    background: var(--colors-main);
 }
 
-.outline {
-    padding: 10px 15px;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background: none;
+.header__circle {
+    background: var(--colors-main);
+    border-radius: 50%;
 }
 
-.outline_red {
-    padding: 10px 15px;
-    border: 1px solid var(--red-light);
-    color: var(--red-light);
-    background: none;
-}
+.header__circle_empty {
+    position: relative;
+    border-radius: 6px;
 
-.background {
-    background: var(--bg-color);
-    color: (--primary-color);
-    border: none;
-}
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 8;
+        opacity: 1;
+        top: 50%;
+        left: 50%;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        border-radius: 6px;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: var(--bg-content);
+    }
 
-.backgroundInverted {
-    background: var(--inverted-bg-color);
-    color: (--inverted-primary-color);
-    border: none;
+    &::after {
+        content: '';
+        position: absolute;
+        opacity: 0;
+        z-index: 7;
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        background: var(--colors-main);
+        transition: all 0.3s ease 0s;
+    }
+
+    &:hover {
+        &::after {
+            opacity: 1;
+        }
+
+        opacity: 1;
+        fill-opacity: 1;
+        stroke-opacity: 1;
+
+        svg {
+            fill: #fff59a;
+        }
+    }
+
+    svg {
+        z-index: 12;
+        fill: #f0f2f4;
+    }
 }
 
 .disabled {

@@ -1,14 +1,33 @@
 .wrapper {
     position: relative;
     width: 100%;
-    background-color: var(--search-bg);
-    height: 40px;
-    max-height: 100px;
-    border-radius: 14px;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+    border-radius: 0 6px 6px 0;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     z-index: 8;
+    //     background: var(--base-2);
+    //     top: 2px;
+    //     height: calc(100% - 4px);
+    //     width: calc(100%);
+    // }
+
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     z-index: 7;
+    //     background: var(--colors-main);
+    //     height: calc(100%);
+    //     width: calc(100%);
+    // }
 }
 
 .input {

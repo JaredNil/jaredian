@@ -5,6 +5,9 @@
     pointer-events: none;
     z-index: -1;
     transition: all 0.1s ease 0s;
+    font: var(--font-m);
+    font-weight: 200;
+
 }
 
 .overlay {
@@ -17,13 +20,13 @@
 }
 
 .content {
-    padding: 20px;
-    border-radius: 12px;
-    background: gainsboro;
+    padding: 12px;
+    border-radius: 16px;
+    background: var(--colors-main);
 
     transition: transform 0.3s ease 0s;
     transform: scale(0.5);
-    max-width: 60%;
+
 }
 
 .opened {

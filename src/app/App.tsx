@@ -16,19 +16,16 @@ const App: React.FC = () => {
 	useEffect(() => console.log('RENDER APPCOMPONENT'));
 
 	return (
-		<div
-			className={classNames('app app_dark_theme', {}, [
-				// theme
-			])}
-		>
+		<div className={classNames('app app_dark_theme', {}, [])}>
+			<header className={cls.headerWrapper}>
+				<Header />
+			</header>
 			<Suspense fallback="">
-				<aside className={cls.sidebarWrapper}>
-					<Sidebar />
-				</aside>
 				<main className={cls.mainWrapper}>
-					<header className={cls.headerContent}>
-						<Header />
-					</header>
+					<aside className={cls.sidebarContent}>
+						<Sidebar />
+					</aside>
+
 					<div className={cls.mainContent}>
 						<AppRouter />
 					</div>

@@ -37,4 +37,56 @@ body {
     background-color: var(--bg-color);
 
     display: flex;
+    flex-direction: column;
+}
+
+
+
+.svg-anima {
+    svg {
+        box-sizing: border-box;
+    }
+
+    $color-time: 36s;
+    $step: calc($color-time/4);
+
+    stop {
+        animation: colors $color-time infinite;
+    }
+
+    .stop-1 {}
+
+    .stop-2 {
+        animation-delay: -$step;
+    }
+
+    .stop-3 {
+        animation-delay: -$step*2;
+    }
+
+    @keyframes colors {
+        15% {
+            stop-color: crimson;
+        }
+
+        30% {
+            stop-color: gold;
+        }
+
+        45% {
+            stop-color: teal;
+        }
+
+        60% {
+            stop-color: yellowgreen;
+        }
+
+        75% {
+            stop-color: orangered;
+        }
+
+        90% {
+            stop-color: purple;
+        }
+    }
 }
